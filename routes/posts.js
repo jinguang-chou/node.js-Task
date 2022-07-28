@@ -8,7 +8,8 @@ router.get("/", (req, res) => {
   });
 
 router.get("/posts", async (req, res) => {//게시물 조회 (제목, 작성자명, 작성날자)
-    const data = await Posts.find().select("user title Dates");
+    const posts = await Posts.find().select("user title Dates");
+    const data = posts.reverse();
     res.json({ 
       data, 
     });
